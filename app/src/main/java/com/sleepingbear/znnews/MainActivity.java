@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		checkPermission();
     }
 
+
     public boolean checkPermission() {
         DicUtils.dicLog("checkPermission");
         boolean isCheck = false;
