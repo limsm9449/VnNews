@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/app/src/main/assets/vnnews.db
+/app/app-release.apk
