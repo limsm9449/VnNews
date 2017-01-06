@@ -86,8 +86,8 @@ public class WordViewActivity extends AppCompatActivity implements View.OnClickL
 
     public void getWordInfo() {
         ImageButton ib_tts = (ImageButton) findViewById(R.id.my_c_wv_ib_tts);
-        //ib_tts.setVisibility(View.GONE);
         ib_tts.setOnClickListener(this);
+        ib_tts.setVisibility(View.GONE);
 
         ib_myVoc = (ImageButton) findViewById(R.id.my_c_wv_ib_myvoc);
         ib_myVoc.setOnClickListener(this);

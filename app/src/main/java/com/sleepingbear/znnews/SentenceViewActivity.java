@@ -111,6 +111,7 @@ public class SentenceViewActivity extends AppCompatActivity implements View.OnCl
 
         ImageButton ib_tts = (ImageButton) findViewById(R.id.my_c_sv_ib_tts);
         ib_tts.setOnClickListener(this);
+        ib_tts.setVisibility(View.GONE);
 
         AdView av = (AdView)findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();

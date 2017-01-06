@@ -34,8 +34,7 @@ public class HelpActivity extends AppCompatActivity {
 
         tempSb.delete(0, tempSb.length());
         tempSb.append("* 뉴스" + CommConstants.sqlCR);
-        tempSb.append("- 11개의 영문 뉴스가 있습니다. " + CommConstants.sqlCR);
-        tempSb.append(" .국내 영어뉴스는 로딩이 빠르지만 외국 영어뉴스는 로딩이 많이 느립니다. 참고하세요." + CommConstants.sqlCR);
+        tempSb.append("- 11개의 베트남어 뉴스가 있습니다. " + CommConstants.sqlCR);
         tempSb.append("" + CommConstants.sqlCR);
         if ( "NEWS".equals(b.getString("SCREEN")) ) {
             CurrentSb.append(tempSb.toString());
@@ -45,7 +44,7 @@ public class HelpActivity extends AppCompatActivity {
 
         tempSb.delete(0, tempSb.length());
         tempSb.append("* 뉴스 상세" + CommConstants.sqlCR);
-        tempSb.append("- 영어뉴스를 보면서 필요한 단어 검색 기능이 있습니다." + CommConstants.sqlCR);
+        tempSb.append("- 베트남어 뉴스를 보면서 필요한 단어 검색 기능이 있습니다." + CommConstants.sqlCR);
         tempSb.append(" .뉴스를 보다가 모르는 단어를 클릭을 하면 하단에 클릭단어의 뜻이 보입니다. " + CommConstants.sqlCR);
         tempSb.append(" .클릭단어의 뜻이 없을경우 하단 오른쪽의 검색 버튼을 클릭하면 Naver,Daum에서 단어 검색을 할 수 있습니다. " + CommConstants.sqlCR);
         tempSb.append(" .하단 단어를 길게 클릭하시면 단어 상세를 보실 수 있습니다." + CommConstants.sqlCR);
@@ -62,7 +61,7 @@ public class HelpActivity extends AppCompatActivity {
 
         tempSb.delete(0, tempSb.length());
         tempSb.append("* 클릭단어" + CommConstants.sqlCR);
-        tempSb.append("- 영어 뉴스를 보면서 클릭한 단어들에 대하여 관리하는 화면입니다." + CommConstants.sqlCR);
+        tempSb.append("- 베트남어 뉴스를 보면서 클릭한 단어들에 대하여 관리하는 화면입니다." + CommConstants.sqlCR);
         tempSb.append(" .상단 수정 버튼(연필모양)를 클릭하시면 단어를 선택, 삭제, 단어장에 저장, 신규 단어장에 저장할 수 있습니다." + CommConstants.sqlCR);
         tempSb.append(" .단어를 클릭하시면 단어상세를 보실 수 있습니다." + CommConstants.sqlCR);
         tempSb.append("" + CommConstants.sqlCR);

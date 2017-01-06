@@ -34,17 +34,15 @@ public class NewsFragment extends Fragment {
         listView = (ListView)mainView.findViewById(R.id.my_f_news_lv);
 
         ArrayList<NewsVo> items = new ArrayList<>();
-        items.add(new NewsVo("E001", "Chosun",R.drawable.img_chosunilbo));
-        items.add(new NewsVo("E002", "Joongang Daily",R.drawable.img_joongangdaily));
-        items.add(new NewsVo("E003", "Korea Herald",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E004", "Korea Times",R.drawable.img_koreatimes));
-        items.add(new NewsVo("E005", "ABC",R.drawable.img_abcnews));
-        items.add(new NewsVo("E006", "BBC",R.drawable.img_bbc));
-        items.add(new NewsVo("E007", "CNN",R.drawable.img_cnn));
-        items.add(new NewsVo("E008", "Los Angeles Times",R.drawable.img_losangelestimes));
-        items.add(new NewsVo("E009", "The New Work Times",R.drawable.img_newworktimes));
-        items.add(new NewsVo("E010", "Reuters",R.drawable.img_reuters));
-        items.add(new NewsVo("E011", "Washingtone Post",R.drawable.img_washingtonepost));
+        items.add(new NewsVo("E001", "24h",R.drawable.img_chosunilbo));
+        items.add(new NewsVo("E002", "vnexpress",R.drawable.img_joongangdaily));
+        items.add(new NewsVo("E003", "vietnamnet",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E004", "vietnamnet2",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E005", "vietnamnet3",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E006", "vietnamnet4",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E007", "vietnamnet5",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E008", "vietnamnet6",R.drawable.img_koreaherald));
+        items.add(new NewsVo("E009", "vietnamnet7",R.drawable.img_koreaherald));
 
         adapter = new NewsAdapter(getContext(), 0, items);
         listView.setAdapter(adapter);

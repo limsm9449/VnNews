@@ -91,75 +91,65 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
 
         // 영자신문 정보
         enUrls = new ArrayList<>();
-        enUrls.add(new NewsVo("E001", "Chosun","http://english.chosun.com/m/",
-                new String[]{   "$('.art_headline')" + js1 + "$" + js2,
-                                "$('.news_body .par')" + js1 + "$" + js2},
+        enUrls.add(new NewsVo("E001", "vnexpress","http://vnexpress.net/",
+                new String[]{   "$('.title_news h1')" + js1 + "$" + js2,
+                                "$('div.ArticleContent')" + js1 + "$" + js2},
                 new String[]{},
-                "$('.art_headline').text()",
-                "$('.news_body').text()"));
-        enUrls.add(new NewsVo("E002", "Joongang Daily","http://mengnews.joins.com/",
-                new String[]{   "$($('h4')[0])" + js1 + "$" + js2,
-                                "$('.en')" + js1 + "$" + js2},
-                new String[]{   "$('.ad_h50').html('')",
-                                "$('.ad_320x250').html('')",
-                                "$('.share_article').html('')"},
-                "$($('h4')[0]).text()",
-                "$('div.en').text()"));
-        enUrls.add(new NewsVo("E003", "Korea Herald","http://m.koreaherald.com/",
-                new String[]{   "$($('#detail h2')[0])" + js1 + "$" + js2,
-                                "$('.article')" + js1 + "$" + js2},
-                new String[]{   "$('.DetailBottom').html('')"},
-                "$($('#detail h2')[0]).text()",
-                "$('div.article').text()"));
-        enUrls.add(new NewsVo("E004", "The Korea Times","http://m.koreatimes.co.kr/phone/",
-                new String[]{   "$('#first_big_news strong .english_mode')" + js1 + "$" + js2,
-                                "$('#startts div .english_mode')" + js1 + "$" + js2},
-                new String[]{   "$('div#wp_wrap').html('')"},
-                "$('#first_big_news strong .english_mode').text()",
-                "$('div.english_mode').text()"));
-        enUrls.add(new NewsVo("E005", "ABC","http://abcnews.go.com",
-                new String[]{   "$('.container .article-header h1')" + js1 + "$" + js2,
-                                "$('.container .article-body')" + js1 + "$" + js2},
+                "$('.title_news h1').text()",
+                "$('.fck_detail p').text()"));
+        enUrls.add(new NewsVo("E002", "vietnamnet","http://vietnamnet.vn/",
+                new String[]{   "$('.ArticleDetail h1')" + js1 + "$" + js2,
+                                "$('div.ArticleContent')" + js1 + "$" + js2},
                 new String[]{},
-                "$('.container .article-header h1').text()",
-                "$('div.article-body').text()"));
-        enUrls.add(new NewsVo("E006", "BBC","http://www.bbc.com/news",
-                new String[]{   "$('.story-body .story-body__h1')" + js1 + "$" + js2,
-                                "$('.story-body .story-body__inner p')" + js1 + "$" + js2},
+                "$('.ArticleDetail h1').text()",
+                "$('div.ArticleContent').text()"));
+        enUrls.add(new NewsVo("E003", "vneconomy","http://vneconomy.vn/",
+                new String[]{   "$('h1.h1titleheaderbvt')" + js1 + "$" + js2,
+                        "$('h2.h2titleheaderbvt')" + js1 + "$" + js2,
+                        "$('div.detailsbaiviet')" + js1 + "$" + js2},
                 new String[]{},
-                "$('.story-body .story-body__h1').text()",
-                "$('div.story-body').text()"));
-        enUrls.add(new NewsVo("E007", "CNN","http://edition.cnn.com",
-                new String[]{   "jQuery('.pg-headline')" + js1 + "jQuery" + js2,
-                                "jQuery('.l-container .zn-body__paragraph')" + js1 + "jQuery" + js2},
-                new String[]{   "jQuery('div.user-msg.headerless.user-msg-flexbox').css('display','none')"},
-                "jQuery('.pg-headline').text()",
-                "jQuery('div.zn-body__paragraph').text()"));
-        enUrls.add(new NewsVo("E008", "Los Angeles Times","http://www.latimes.com",
-                new String[]{   "$('.trb_ar_hl_t')" + js1 + "$" + js2,
-                                "$('.trb_ar_page p')" + js1 + "$" + js2},
-                new String[]{   "$('div.trb_bnn').html('')",
-                                "$('div.met-promo').css('display','none')"},
-                "$('.trb_ar_hl_t').text()",
-                "$('div.trb_ar_page p').text()"));
-        enUrls.add(new NewsVo("E009", "The New Work Times","http://mobile.nytimes.com/?referer=",
-                new String[]{   "$('.headline')" + js1 + "$" + js2,
-                                "$('.article-body p')" + js1 + "$" + js2},
+                "$('h1.h1titleheaderbvt').text()",
+                "$('div.detailsbaiviet').text()"));
+        enUrls.add(new NewsVo("E004", "thesaigontimes","http://www.thesaigontimes.vn/",
+                new String[]{   "jQuery('span.Title')" + js1 + "jQuery" + js2,
+                        "jQuery('span.Content p')" + js1 + "jQuery" + js2},
                 new String[]{},
-                "$('.headline').text()",
-                "$('.article-body p').text()"));
-        enUrls.add(new NewsVo("E010", "Reuters","http://mobile.reuters.com/",
-                new String[]{   "$('.article-info h1')" + js1 + "$" + js2,
-                                "$('#articleText p')" + js1 + "$" + js2},
+                "jQuery('span.Title').text()",
+                "jQuery('span.Content p').text()"));
+        enUrls.add(new NewsVo("E005", "vir","http://www.vir.com.vn/",
+                new String[]{   "$('h1.entry-title')" + js1 + "$" + js2,
+                        "$('div.lead-post p')" + js1 + "$" + js2,
+                        "$('div.entry-content p')" + js1 + "$" + js2},
                 new String[]{},
-                "$('.article-info h1').text()",
-                "$('#articleText p').text()"));
-        enUrls.add(new NewsVo("E011", "Washingtone Post","https://www.washingtonpost.com",
-                new String[]{   "$('#topper-headline-wrapper h1')" + js1 + "$" + js2,
-                                "$('#article-body article p')" + js1 + "$" + js2},
+                "$('h1.entry-title').text()",
+                "$('div.entry-content p').text()"));
+        enUrls.add(new NewsVo("E006", "dep","http://www.dep.com.vn/",
+                new String[]{   "$('div.article-header h1')" + js1 + "$" + js2,
+                        "$('div.summary p')" + js1 + "$" + js2,
+                        "$('div.text p')" + js1 + "$" + js2},
                 new String[]{},
-                "$('#topper-headline-wrapper h1').text()",
-                "$('article p').text()"));
+                "$('div.article-header h1').text()",
+                "$('div.text p').text()"));
+        enUrls.add(new NewsVo("E007", "tuoitre","http://tuoitre.vn/",
+                new String[]{   "$('h1.title-2 a')" + js1 + "$" + js2,
+                        "$('p.txt-head')" + js1 + "$" + js2,
+                        "$('div.text p')" + js1 + "$" + js2},
+                new String[]{},
+                "$('h1.title-2 a').text()",
+                "$('div.fck p').text()"));
+        enUrls.add(new NewsVo("E008", "nhandan","http://www.nhandan.org.vn/",
+                new String[]{   "$('div.ndtitle h3')" + js1 + "$" + js2,
+                        "$('div.ndcontent p')" + js1 + "$" + js2},
+                new String[]{},
+                "$('div.ndtitle h3').text()",
+                "$('div.ndcontent p').text()"));
+        enUrls.add(new NewsVo("E009", "laodong","http://laodong.com.vn/",
+                new String[]{   "$('h1.article-title')" + js1 + "$" + js2,
+                        "$('div.summary')" + js1 + "$" + js2,
+                        "$('div#aka_divfirst p')" + js1 + "$" + js2},
+                new String[]{},
+                "$('h1.article-title').text()",
+                "$('div#aka_divfirst p').text()"));
 
         String currUrl = "";
         param = getIntent().getExtras();
@@ -376,7 +366,7 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 webView.loadUrl("javascript:window.android.action('SENTENCE', window.getSelection().toString())");
 
                 break;
-            case R.id.action_tts_all:
+            /*case R.id.action_tts_all:
                 webView.loadUrl("javascript:window.android.action('TTS', " + currItem.getBodyClass() + ")");
 
                 break;
@@ -384,6 +374,7 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 webView.loadUrl("javascript:window.android.action('TTS', window.getSelection().toString())");
 
                 break;
+                */
             case R.id.action_bookmark:
                 webView.loadUrl("javascript:window.android.action('BOOKMARK',  " + currItem.getTitleClass() + ")");
 
