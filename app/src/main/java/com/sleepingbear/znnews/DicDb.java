@@ -199,7 +199,7 @@ public class DicDb {
         StringBuffer sql = new StringBuffer();
         sql.append("SELECT SPELLING, MEAN, ENTRY_ID  " + CommConstants.sqlCR);
         sql.append("  FROM DIC " + CommConstants.sqlCR);
-        sql.append(" WHERE WORD = '" + word.toLowerCase().replaceAll("'", " ") + "' OR TENSE LIKE '% " + word.toLowerCase().replaceAll("'", " ") + " %'" + CommConstants.sqlCR);
+        sql.append(" WHERE WORD = '" + word.toLowerCase().replaceAll("'", " ") + "' " + CommConstants.sqlCR);
         sql.append("ORDER  BY SPELLING DESC " + CommConstants.sqlCR);
         DicUtils.dicSqlLog(sql.toString());
 

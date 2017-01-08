@@ -97,20 +97,20 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 new String[]{},
                 "$('.title_news h1').text()",
                 "$('.fck_detail p').text()"));
-        enUrls.add(new NewsVo("E002", "vietnamnet","http://vietnamnet.vn/",
+        enUrls.add(new NewsVo("E002", "vietnamnet","http://m.vietnamnet.vn/",
                 new String[]{   "$('.ArticleDetail h1')" + js1 + "$" + js2,
                                 "$('div.ArticleContent')" + js1 + "$" + js2},
                 new String[]{},
                 "$('.ArticleDetail h1').text()",
                 "$('div.ArticleContent').text()"));
-        enUrls.add(new NewsVo("E003", "vneconomy","http://vneconomy.vn/",
+        enUrls.add(new NewsVo("E003", "vneconomy","http://m.vneconomy.vn/",
                 new String[]{   "$('h1.h1titleheaderbvt')" + js1 + "$" + js2,
                         "$('h2.h2titleheaderbvt')" + js1 + "$" + js2,
                         "$('div.detailsbaiviet')" + js1 + "$" + js2},
                 new String[]{},
                 "$('h1.h1titleheaderbvt').text()",
                 "$('div.detailsbaiviet').text()"));
-        enUrls.add(new NewsVo("E004", "thesaigontimes","http://www.thesaigontimes.vn/",
+        enUrls.add(new NewsVo("E004", "thesaigontimes","http://mobile.thesaigontimes.vn/",
                 new String[]{   "jQuery('span.Title')" + js1 + "jQuery" + js2,
                         "jQuery('span.Content p')" + js1 + "jQuery" + js2},
                 new String[]{},
@@ -123,7 +123,7 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 new String[]{},
                 "$('h1.entry-title').text()",
                 "$('div.entry-content p').text()"));
-        enUrls.add(new NewsVo("E006", "dep","http://www.dep.com.vn/",
+        enUrls.add(new NewsVo("E006", "dep","http://m.dep.com.vn/",
                 new String[]{   "$('div.article-header h1')" + js1 + "$" + js2,
                         "$('div.summary p')" + js1 + "$" + js2,
                         "$('div.text p')" + js1 + "$" + js2},
@@ -143,7 +143,7 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                 new String[]{},
                 "$('div.ndtitle h3').text()",
                 "$('div.ndcontent p').text()"));
-        enUrls.add(new NewsVo("E009", "laodong","http://laodong.com.vn/",
+        enUrls.add(new NewsVo("E009", "laodong","http://m.laodong.com.vn/",
                 new String[]{   "$('h1.article-title')" + js1 + "$" + js2,
                         "$('div.summary')" + js1 + "$" + js2,
                         "$('div#aka_divfirst p')" + js1 + "$" + js2},
