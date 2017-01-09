@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,15 +35,18 @@ public class NewsFragment extends Fragment {
         listView = (ListView)mainView.findViewById(R.id.my_f_news_lv);
 
         ArrayList<NewsVo> items = new ArrayList<>();
-        items.add(new NewsVo("E001", "24h",R.drawable.img_chosunilbo));
-        items.add(new NewsVo("E002", "vnexpress",R.drawable.img_joongangdaily));
-        items.add(new NewsVo("E003", "vietnamnet",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E004", "vietnamnet2",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E005", "vietnamnet3",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E006", "vietnamnet4",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E007", "vietnamnet5",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E008", "vietnamnet6",R.drawable.img_koreaherald));
-        items.add(new NewsVo("E009", "vietnamnet7",R.drawable.img_koreaherald));
+        int idx = 1;
+        items.add(new NewsVo("E" + idx++, "Life & Health Newspaper - 종합일간지"));
+        items.add(new NewsVo("E" + idx++, "Youth Newspaper - 종합일간지"));
+        items.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper - 종합일간지"));
+        items.add(new NewsVo("E" + idx++, "Lao Dong Newspaper - 종합일간지"));
+        items.add(new NewsVo("E" + idx++, "Yan News - 종합일간지"));
+        items.add(new NewsVo("E" + idx++, "Vietnam News express - 경제일간지"));
+        items.add(new NewsVo("E" + idx++, "Vietnam.net"));
+        items.add(new NewsVo("E" + idx++, "Vietnam Economic Times - 경제주간지"));
+        items.add(new NewsVo("E" + idx++, "Kinh te Saigon - 경제주간지"));
+        items.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep) - 종합주간지"));
+        items.add(new NewsVo("E" + idx++, "Vietnam Television - 라디오/TV"));
 
         adapter = new NewsAdapter(getContext(), 0, items);
         listView.setAdapter(adapter);
@@ -75,12 +79,10 @@ public class NewsFragment extends Fragment {
     private class NewsVo {
         private String kind;
         private String name;
-        private int imageRes;
 
-        public NewsVo(String kind, String name, int imageRes) {
+        public NewsVo(String kind, String name) {
             this.kind = kind;
             this.name = name;
-            this.imageRes = imageRes;
         }
 
         public String getKind() {
@@ -97,14 +99,6 @@ public class NewsFragment extends Fragment {
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        public int getImageRes() {
-            return imageRes;
-        }
-
-        public void setImageRes(int imageRes) {
-            this.imageRes = imageRes;
         }
     }
 
@@ -123,9 +117,7 @@ public class NewsFragment extends Fragment {
                 v = vi.inflate(R.layout.fragment_news_item, null);
             }
 
-            // ImageView 인스턴스
-            ImageView imageView = (ImageView)v.findViewById(R.id.my_f_news_item_iv);
-            imageView.setImageResource(items.get(position).imageRes);
+            ((TextView)v.findViewById(R.id.my_f_tv_newname)).setText(items.get(position).getName());
 
             return v;
         }

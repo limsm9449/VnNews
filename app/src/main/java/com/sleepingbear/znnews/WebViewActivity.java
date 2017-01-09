@@ -82,74 +82,151 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
 
         myTTS = new TextToSpeech(this, this);
 
-        String js1 = ".html(function(index, oldHtml) {return oldHtml.replace(/<br *\\/?>/gi, '\\n')" +
-                ".replace(/<[^>]*>/g, '')" +
-                ".replace(/(<br>)/g, '\\n')" + "" +
-                ".replace(/\\b(\\w+?)\\b/g,'<span class=\"word\">$1</span>')" +
-                ".replace(/\\n/g, '<br>')});";
+        String js1 = ".html(function(index, oldHtml) {" +
+                "var word = oldHtml.replace(/(<br>)/gi, '\\n').replace(/(<([^>]+)>)/gi, '').replace(/(&nbsp;)/gi, '').split(' ');" +
+                "for ( var i = 0; i < word.length; i++ ) {" +
+                "  word[i] = '<span class=\"word\">' + word[i] + '</span>';" +
+                "}" +
+                "return word.join(' ').replace(/(\\n)/gi, '<br>');" +
+                "});";
         String js2 = "('.word').click(function(event) { window.android.setWord(event.target.innerHTML) });";
 
-        // 영자신문 정보
+        /*
+function fn(id) {
+	var nodes = document.getElementsByClassName(id)[0].childNodes;
+	for ( var i = 0; i < nodes.length; i++ ) {
+		if ( nodes[i].tagName == "P" ) {
+			words = nodes[i].innerHTML.replace(/(<([^>]+)>)/gi, '').split(" ");
+			for ( var m = 0; m < words.length; m++ ) {
+				words[m] = '<span onclick=\"alert(111)\">' + words[m] + '</span>';
+			}
+			nodes[i].innerHTML = words.join(" ");
+		}
+	}
+}
+fn("ta-justify");
+         */
         enUrls = new ArrayList<>();
-        enUrls.add(new NewsVo("E001", "vnexpress","http://vnexpress.net/",
-                new String[]{   "$('.title_news h1')" + js1 + "$" + js2,
-                                "$('div.ArticleContent')" + js1 + "$" + js2},
-                new String[]{},
-                "$('.title_news h1').text()",
-                "$('.fck_detail p').text()"));
-        enUrls.add(new NewsVo("E002", "vietnamnet","http://m.vietnamnet.vn/",
-                new String[]{   "$('.ArticleDetail h1')" + js1 + "$" + js2,
-                                "$('div.ArticleContent')" + js1 + "$" + js2},
-                new String[]{},
-                "$('.ArticleDetail h1').text()",
-                "$('div.ArticleContent').text()"));
-        enUrls.add(new NewsVo("E003", "vneconomy","http://m.vneconomy.vn/",
-                new String[]{   "$('h1.h1titleheaderbvt')" + js1 + "$" + js2,
-                        "$('h2.h2titleheaderbvt')" + js1 + "$" + js2,
-                        "$('div.detailsbaiviet')" + js1 + "$" + js2},
-                new String[]{},
-                "$('h1.h1titleheaderbvt').text()",
-                "$('div.detailsbaiviet').text()"));
-        enUrls.add(new NewsVo("E004", "thesaigontimes","http://mobile.thesaigontimes.vn/",
-                new String[]{   "jQuery('span.Title')" + js1 + "jQuery" + js2,
-                        "jQuery('span.Content p')" + js1 + "jQuery" + js2},
-                new String[]{},
-                "jQuery('span.Title').text()",
-                "jQuery('span.Content p').text()"));
-        enUrls.add(new NewsVo("E005", "vir","http://www.vir.com.vn/",
-                new String[]{   "$('h1.entry-title')" + js1 + "$" + js2,
-                        "$('div.lead-post p')" + js1 + "$" + js2,
-                        "$('div.entry-content p')" + js1 + "$" + js2},
-                new String[]{},
-                "$('h1.entry-title').text()",
-                "$('div.entry-content p').text()"));
-        enUrls.add(new NewsVo("E006", "dep","http://m.dep.com.vn/",
-                new String[]{   "$('div.article-header h1')" + js1 + "$" + js2,
-                        "$('div.summary p')" + js1 + "$" + js2,
-                        "$('div.text p')" + js1 + "$" + js2},
-                new String[]{},
-                "$('div.article-header h1').text()",
-                "$('div.text p').text()"));
-        enUrls.add(new NewsVo("E007", "tuoitre","http://tuoitre.vn/",
-                new String[]{   "$('h1.title-2 a')" + js1 + "$" + js2,
+        int idx = 1;
+
+        enUrls.add(new NewsVo("E" + idx++, "Life & Health Newspaper - 종합일간지","http://suckhoedoisong.vn",
+                new String[]{
+                        "$('h1.title_detail')" + js1 + "$" + js2,
+                        "$('div.sapo_detail')" + js1 + "$" + js2,
+                        "$('div#content_detail_news p')" + js1 + "$" + js2
+                },
+                new String[]{
+                },
+                "$('h1.title_detail').text()",
+                "$('div#content_detail_news p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Youth Newspaper - 종합일간지","http://tuoitre.vn/",
+                new String[]{
+                        "$('h1.title-2 a')" + js1 + "$" + js2,
                         "$('p.txt-head')" + js1 + "$" + js2,
-                        "$('div.text p')" + js1 + "$" + js2},
-                new String[]{},
+                        "$('div.fck p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
                 "$('h1.title-2 a').text()",
                 "$('div.fck p').text()"));
-        enUrls.add(new NewsVo("E008", "nhandan","http://www.nhandan.org.vn/",
-                new String[]{   "$('div.ndtitle h3')" + js1 + "$" + js2,
-                        "$('div.ndcontent p')" + js1 + "$" + js2},
-                new String[]{},
+        enUrls.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper - 종합일간지","http://www.nhandan.org.vn/",
+                new String[]{
+                        "$('div.ndtitle h3')" + js1 + "$" + js2,
+                        "$('div.ndcontent p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
                 "$('div.ndtitle h3').text()",
                 "$('div.ndcontent p').text()"));
-        enUrls.add(new NewsVo("E009", "laodong","http://m.laodong.com.vn/",
-                new String[]{   "$('h1.article-title')" + js1 + "$" + js2,
+        enUrls.add(new NewsVo("E" + idx++, "Lao Dong Newspaper - 종합일간지","http://m.laodong.com.vn/",
+                new String[]{
+                        "$('h1.article-title')" + js1 + "$" + js2,
                         "$('div.summary')" + js1 + "$" + js2,
-                        "$('div#aka_divfirst p')" + js1 + "$" + js2},
-                new String[]{},
+                        "$('div#aka_divfirst p')" + js1 + "$" + js2,
+                        "$('div#divend p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
                 "$('h1.article-title').text()",
                 "$('div#aka_divfirst p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Yan News - 종합일간지","http://www.yan.vn/",
+                new String[]{
+                        "$('h1.title')" + js1 + "$" + js2,
+                        "$('div#contentBody p')" + js1 + "$" + js2
+                },
+                new String[]{
+                        "$('div#adsBottomBanner').html('');",
+                        "$('div#mostViewVideo').html('');"
+                },
+                "$('h1.title').text()",
+                "$('div#contentBody p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Vietnam News express - 경제일간지","http://vnexpress.net/",
+                new String[]{
+                        "$('div.title_news h1')" + js1 + "$" + js2,
+                        "$('h3.short_intro')" + js1 + "$" + js2,
+                        "$('div p.Normal')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "$('.title_news h1').text()",
+                "$('.fck_detail p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Vietnam.net","http://m.vietnamnet.vn/",
+                new String[]{
+                        "jQery('div.ArticleDetail h1')" + js1 + "$" + js2,
+                        "jQery('div.ArticleContent p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "jQery('.ArticleDetail h1').text()",
+                "jQery('div.ArticleContent').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Vietnam Economic Times - 경제주간지","http://m.vneconomy.vn/",
+                new String[]{
+                        "$('h1.h1titleheaderbvt')" + js1 + "$" + js2,
+                        "$('h2.h2titleheaderbvt')" + js1 + "$" + js2,
+                        "$('div.detailsbaiviet')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "$('h1.h1titleheaderbvt').text()",
+                "$('div.detailsbaiviet').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Kinh te Saigon - 경제주간지","http://mobile.thesaigontimes.vn/",
+                new String[]{
+                        "$('span.Title')" + js1 + "jQuery" + js2,
+                        "jQuery('span.Content p')" + js1 + "jQuery" + js2
+                },
+                new String[]{
+
+                },
+                "jQuery('span.Title').text()",
+                "jQuery('span.Content p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep) - 종합주간지","http://m.dep.com.vn/",
+                new String[]{
+                        "$('div.title_news p')" + js1 + "$" + js2,
+                        "$('div.summary p')" + js1 + "$" + js2,
+                        "$('div.text p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "$('div.article-header h1').text()",
+                "$('div.text p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "Vietnam Television - 라디오/TV","http://vtv.vn",
+                new String[]{
+                        "$('h1.title_detail')" + js1 + "$" + js2,
+                        "$('h2.sapo')" + js1 + "$" + js2,
+                        "$('div.ta-justify p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "$('h1.title_detail').text()",
+                "$('div.ta-justify p').text()"));
 
         String currUrl = "";
         param = getIntent().getExtras();
@@ -681,13 +758,14 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
         public void action(final String kind, final String arg) { // must be final
             handler.post(new Runnable() {
                 public void run() {
-                    DicUtils.dicLog(arg);
+                    final String chgArg = arg.replaceAll("[\"',.:-]","");
+                    DicUtils.dicLog(chgArg);
                     if ( "COPY".equals(kind) ) {
                         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                        ClipData clip = ClipData.newPlainText("simple text", arg);
+                        ClipData clip = ClipData.newPlainText("simple text", chgArg);
                         clipboard.setPrimaryClip(clip);
                     } else if ( "WORD".equals(kind) ) {
-                        HashMap info = DicDb.getMean(mDb, arg);
+                        HashMap info = DicDb.getMean(mDb, chgArg);
 
                         if ( info.containsKey("ENTRY_ID") ) {
                             Intent intent = new Intent(getApplication(), WordViewActivity.class);
@@ -700,30 +778,30 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                             Toast.makeText(getApplicationContext(), "등록된 단어가 아닙니다.", Toast.LENGTH_SHORT).show();
                         }
                     } else if ( "WORD_SEARCH".equals(kind) ) {
-                        clickWord = arg;
+                        clickWord = chgArg;
                         wordSearch();
                     } else if ( "SENTENCE".equals(kind) ) {
                         Intent intent = new Intent(getApplication(), SentenceViewActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putString("foreign", arg);
+                        bundle.putString("foreign", chgArg);
                         bundle.putString("han", "");
                         intent.putExtras(bundle);
 
                         startActivity(intent);
                     } else if ( "TTS".equals(kind) ) {
-                        if ( arg.length() > 4000 ) {
+                        if ( chgArg.length() > 4000 ) {
                             Toast.makeText(getApplicationContext(), "TTS는 4,000자 까지만 가능합니다.", Toast.LENGTH_SHORT).show();
-                            myTTS.speak(arg.substring(0, 3900), TextToSpeech.QUEUE_FLUSH, null);
+                            myTTS.speak(chgArg.substring(0, 3900), TextToSpeech.QUEUE_FLUSH, null);
                         } else {
-                            myTTS.speak(arg, TextToSpeech.QUEUE_FLUSH, null);
+                            myTTS.speak(chgArg, TextToSpeech.QUEUE_FLUSH, null);
                         }
                     } else if ( "URL".equals(kind) ) {
-                        newsUrl = arg.replace("http://","").replace("https://","");
+                        newsUrl = chgArg.replace("http://","").replace("https://","");
                         DicUtils.dicLog("URL : " + newsUrl);
                     } else if ( "BOOKMARK".equals(kind) ) {
-                        DicDb.insDicBoolmark(mDb, currItem.getKind(), arg.replaceAll("[':]",""), newsUrl, "");
+                        DicDb.insDicBoolmark(mDb, currItem.getKind(), chgArg.replaceAll("[':]",""), newsUrl, "");
 
-                        DicUtils.writeInfoToFile(getApplicationContext(), "BOOKMARK" + ":" + currItem.getKind() + ":" + arg.replaceAll("[':]","") + ":" + newsUrl + ":" + DicUtils.getDelimiterDate(DicUtils.getCurrentDate(), "."));
+                        DicUtils.writeInfoToFile(getApplicationContext(), "BOOKMARK" + ":" + currItem.getKind() + ":" + chgArg.replaceAll("[':]","") + ":" + newsUrl + ":" + DicUtils.getDelimiterDate(DicUtils.getCurrentDate(), "."));
 
                         Toast.makeText(getApplicationContext(), "북마크에 등록했습니다. 메인화면의 '북마크' 탭에서 내용을 확인하세요.", Toast.LENGTH_SHORT).show();
                     } else if ( "TRANSLATE".equals(kind) ) {
@@ -743,12 +821,12 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
                             public void onClick(DialogInterface dialog, int which) {
                                 //클립보드에 복사
                                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                                ClipData clip = ClipData.newPlainText("simple text", arg);
+                                ClipData clip = ClipData.newPlainText("simple text", chgArg);
                                 clipboard.setPrimaryClip(clip);
 
                                 Bundle bundle = new Bundle();
                                 bundle.putString("site", kindCodes[m2Select]);
-                                bundle.putString("sentence", arg);
+                                bundle.putString("sentence", chgArg);
 
                                 Intent intent = new Intent(getApplication(), WebTranslateActivity.class);
                                 intent.putExtras(bundle);
