@@ -130,7 +130,7 @@ public class WordViewActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        Cursor wordCursor = db.rawQuery(" SELECT SEQ _id, WORD, MEAN, ENTRY_ID, SPELLING, TENSE, TYPE, (SELECT COUNT(*) FROM DIC_VOC WHERE ENTRY_ID = '" + entryId + "') MY_VOC FROM DIC WHERE ENTRY_ID = '" + entryId + "'", null);
+        Cursor wordCursor = db.rawQuery(" SELECT SEQ _id, WORD, MEAN, ENTRY_ID, SPELLING, (SELECT COUNT(*) FROM DIC_VOC WHERE ENTRY_ID = '" + entryId + "') MY_VOC FROM DIC WHERE ENTRY_ID = '" + entryId + "'", null);
         if ( wordCursor.moveToNext() ) {
             TextView tv_word = (TextView)this.findViewById(R.id.my_c_wv_tv_word);
             tv_word.setText(wordCursor.getString(wordCursor.getColumnIndexOrThrow("WORD")));
@@ -140,12 +140,6 @@ public class WordViewActivity extends AppCompatActivity implements View.OnClickL
 
             TextView tv_mean = (TextView)this.findViewById(R.id.my_c_wv_tv_mean);
             tv_mean.setText(wordCursor.getString(wordCursor.getColumnIndexOrThrow("MEAN")));
-
-            ((TextView)this.findViewById(R.id.my_c_wv_tv_tense)).setText(wordCursor.getString(wordCursor.getColumnIndexOrThrow("TENSE")).replaceAll("\\^", " : ").replaceAll(",",  ", "));
-            if ( "".equals(DicUtils.getString(wordCursor.getString(wordCursor.getColumnIndexOrThrow("TENSE")))) ) {
-                ((LinearLayout)this.findViewById(R.id.my_c_wv_ll_tense)).setVisibility(View.GONE);
-            }
-            ((TextView)this.findViewById(R.id.my_c_wv_tv_type)).setText(wordCursor.getString(wordCursor.getColumnIndexOrThrow("TYPE")));
 
             if ( "0".equals(wordCursor.getString(wordCursor.getColumnIndexOrThrow("MY_VOC"))) ) {
                 ImageButton ib_myvoc = (ImageButton)this.findViewById(R.id.my_c_wv_ib_myvoc);

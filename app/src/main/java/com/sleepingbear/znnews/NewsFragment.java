@@ -36,17 +36,17 @@ public class NewsFragment extends Fragment {
 
         ArrayList<NewsVo> items = new ArrayList<>();
         int idx = 1;
-        items.add(new NewsVo("E" + idx++, "Life & Health Newspaper - 종합일간지"));
-        items.add(new NewsVo("E" + idx++, "Youth Newspaper - 종합일간지"));
-        items.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper - 종합일간지"));
-        items.add(new NewsVo("E" + idx++, "Lao Dong Newspaper - 종합일간지"));
-        items.add(new NewsVo("E" + idx++, "Yan News - 종합일간지"));
-        items.add(new NewsVo("E" + idx++, "Vietnam News express - 경제일간지"));
+        items.add(new NewsVo("E" + idx++, "Youth Newspaper"));
+        items.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper"));
+        items.add(new NewsVo("E" + idx++, "Lao Dong Newspaper"));
+        items.add(new NewsVo("E" + idx++, "Yan News"));
+        items.add(new NewsVo("E" + idx++, "Vietnam News express"));
         items.add(new NewsVo("E" + idx++, "Vietnam.net"));
-        items.add(new NewsVo("E" + idx++, "Vietnam Economic Times - 경제주간지"));
-        items.add(new NewsVo("E" + idx++, "Kinh te Saigon - 경제주간지"));
-        items.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep) - 종합주간지"));
-        items.add(new NewsVo("E" + idx++, "Vietnam Television - 라디오/TV"));
+        items.add(new NewsVo("E" + idx++, "Vietnam Economic Times"));
+        items.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep)"));
+        items.add(new NewsVo("E" + idx++, "Kinh te Saigon"));
+        items.add(new NewsVo("E" + idx++, "Vietnam Television"));
+        items.add(new NewsVo("E" + idx++, "Life & Health Newspaper"));
 
         adapter = new NewsAdapter(getContext(), 0, items);
         listView.setAdapter(adapter);

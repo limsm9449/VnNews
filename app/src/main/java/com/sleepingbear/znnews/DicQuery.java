@@ -10,7 +10,7 @@ public class DicQuery {
         sql.append("       SEQ _id, " + CommConstants.sqlCR);
         sql.append("       (SELECT COUNT(*) FROM DIC_VOC WHERE ENTRY_ID = A.ENTRY_ID) MY_VOC " + CommConstants.sqlCR);
         sql.append("  FROM DIC A " + CommConstants.sqlCR);
-        sql.append(" WHERE WORD = '" + word.toLowerCase().replaceAll("'", " ") + "' OR TENSE LIKE '% " + word.toLowerCase().replaceAll("'", " ") + " %'" + CommConstants.sqlCR);
+        sql.append(" WHERE WORD = '" + word.toLowerCase().replaceAll("'", " ") + "' " + CommConstants.sqlCR);
 
         DicUtils.dicSqlLog(sql.toString());
 

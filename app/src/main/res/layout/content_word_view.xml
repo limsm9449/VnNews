@@ -38,19 +38,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type"
-                android:id="@+id/my_c_wv_tv_type"
-                android:layout_marginLeft="10dp"
-                android:textAlignment="gravity"
-                android:textSize="13dp"
-                android:textStyle="normal"
-                android:textColor="#424040"
-                android:layout_toRightOf="@+id/my_c_wv_tv_word"
-                android:layout_centerVertical="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Spelling"
                 android:id="@+id/my_c_wv_tv_spelling"
                 android:layout_marginLeft="10dp"
@@ -60,7 +47,7 @@
                 android:textColor="#424040"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/my_c_wv_ib_tts"
-                android:layout_toRightOf="@+id/my_c_wv_tv_type" />
+                android:layout_toRightOf="@+id/my_c_wv_tv_word" />
 
             <ImageButton
                 android:layout_width="wrap_content"

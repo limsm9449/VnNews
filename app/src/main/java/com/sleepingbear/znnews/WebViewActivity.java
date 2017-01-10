@@ -82,12 +82,13 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
 
         myTTS = new TextToSpeech(this, this);
 
-        String js1 = ".html(function(index, oldHtml) {" +
-                "var word = oldHtml.replace(/(<br>)/gi, '\\n').replace(/(<([^>]+)>)/gi, '').replace(/(&nbsp;)/gi, '').split(' ');" +
-                "for ( var i = 0; i < word.length; i++ ) {" +
-                "  word[i] = '<span class=\"word\">' + word[i] + '</span>';" +
-                "}" +
-                "return word.join(' ').replace(/(\\n)/gi, '<br>');" +
+        String js1 =
+                ".html(function(index, oldHtml) {" +
+                    "var word = oldHtml.replace(/(<br>)/gi, '\\n').replace(/(<([^>]+)>)/gi, '').replace(/(&nbsp;)/gi, '').split(' ');" +
+                    "for ( var i = 0; i < word.length; i++ ) {" +
+                        "  word[i] = '<span class=\"word\">' + word[i] + '</span>';" +
+                    "}" +
+                    "return word.join(' ').replace(/(\\n)/gi, '<br>');" +
                 "});";
         String js2 = "('.word').click(function(event) { window.android.setWord(event.target.innerHTML) });";
 
@@ -109,20 +110,9 @@ fn("ta-justify");
         enUrls = new ArrayList<>();
         int idx = 1;
 
-        enUrls.add(new NewsVo("E" + idx++, "Life & Health Newspaper - 종합일간지","http://suckhoedoisong.vn",
+        enUrls.add(new NewsVo("E" + idx++, "Youth Newspaper","http://tuoitre.vn/",
                 new String[]{
-                        "$('h1.title_detail')" + js1 + "$" + js2,
-                        "$('div.sapo_detail')" + js1 + "$" + js2,
-                        "$('div#content_detail_news p')" + js1 + "$" + js2
-                },
-                new String[]{
-                },
-                "$('h1.title_detail').text()",
-                "$('div#content_detail_news p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Youth Newspaper - 종합일간지","http://tuoitre.vn/",
-                new String[]{
-                        "$('h1.title-2 a')" + js1 + "$" + js2,
-                        "$('p.txt-head')" + js1 + "$" + js2,
+                        "$('div.fck h1')" + js1 + "$" + js2,
                         "$('div.fck p')" + js1 + "$" + js2
                 },
                 new String[]{
@@ -130,7 +120,7 @@ fn("ta-justify");
                 },
                 "$('h1.title-2 a').text()",
                 "$('div.fck p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper - 종합일간지","http://www.nhandan.org.vn/",
+        enUrls.add(new NewsVo("E" + idx++, "Nhan Dan Newspaper","http://www.nhandan.org.vn/",
                 new String[]{
                         "$('div.ndtitle h3')" + js1 + "$" + js2,
                         "$('div.ndcontent p')" + js1 + "$" + js2
@@ -140,7 +130,7 @@ fn("ta-justify");
                 },
                 "$('div.ndtitle h3').text()",
                 "$('div.ndcontent p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Lao Dong Newspaper - 종합일간지","http://m.laodong.com.vn/",
+        enUrls.add(new NewsVo("E" + idx++, "Lao Dong Newspaper","http://m.laodong.com.vn/",
                 new String[]{
                         "$('h1.article-title')" + js1 + "$" + js2,
                         "$('div.summary')" + js1 + "$" + js2,
@@ -152,7 +142,7 @@ fn("ta-justify");
                 },
                 "$('h1.article-title').text()",
                 "$('div#aka_divfirst p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Yan News - 종합일간지","http://www.yan.vn/",
+        enUrls.add(new NewsVo("E" + idx++, "Yan News","http://www.yan.vn/",
                 new String[]{
                         "$('h1.title')" + js1 + "$" + js2,
                         "$('div#contentBody p')" + js1 + "$" + js2
@@ -163,7 +153,7 @@ fn("ta-justify");
                 },
                 "$('h1.title').text()",
                 "$('div#contentBody p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Vietnam News express - 경제일간지","http://vnexpress.net/",
+        enUrls.add(new NewsVo("E" + idx++, "Vietnam News express","http://vnexpress.net/",
                 new String[]{
                         "$('div.title_news h1')" + js1 + "$" + js2,
                         "$('h3.short_intro')" + js1 + "$" + js2,
@@ -176,15 +166,14 @@ fn("ta-justify");
                 "$('.fck_detail p').text()"));
         enUrls.add(new NewsVo("E" + idx++, "Vietnam.net","http://m.vietnamnet.vn/",
                 new String[]{
-                        "jQery('div.ArticleDetail h1')" + js1 + "$" + js2,
-                        "jQery('div.ArticleContent p')" + js1 + "$" + js2
+                        "jQuery('div.article-detail h1')" + js1 + "$" + js2,
+                        "jQuery('p')" + js1 + "$" + js2
                 },
                 new String[]{
-
                 },
-                "jQery('.ArticleDetail h1').text()",
-                "jQery('div.ArticleContent').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Vietnam Economic Times - 경제주간지","http://m.vneconomy.vn/",
+                "jQuery('div.article-detail h1').text()",
+                "jQuery('p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "- Vietnam Economic Times","http://m.vneconomy.vn/",
                 new String[]{
                         "$('h1.h1titleheaderbvt')" + js1 + "$" + js2,
                         "$('h2.h2titleheaderbvt')" + js1 + "$" + js2,
@@ -195,9 +184,20 @@ fn("ta-justify");
                 },
                 "$('h1.h1titleheaderbvt').text()",
                 "$('div.detailsbaiviet').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Kinh te Saigon - 경제주간지","http://mobile.thesaigontimes.vn/",
+        enUrls.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep)","http://m.dep.com.vn/",
                 new String[]{
-                        "$('span.Title')" + js1 + "jQuery" + js2,
+                        "$('div.title_news p')" + js1 + "$" + js2,
+                        "$('div.sapo p')" + js1 + "$" + js2,
+                        "$('div.content p')" + js1 + "$" + js2
+                },
+                new String[]{
+
+                },
+                "$('div.title_news p').text()",
+                "$('div.content p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "- (jquery 사용 안함) Kinh te Saigon - 경제주간지","http://mobile.thesaigontimes.vn/",
+                new String[]{
+                        "jQuery('span.Title')" + js1 + "jQuery" + js2,
                         "jQuery('span.Content p')" + js1 + "jQuery" + js2
                 },
                 new String[]{
@@ -205,18 +205,7 @@ fn("ta-justify");
                 },
                 "jQuery('span.Title').text()",
                 "jQuery('span.Content p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Life Style Magazine (Dep) - 종합주간지","http://m.dep.com.vn/",
-                new String[]{
-                        "$('div.title_news p')" + js1 + "$" + js2,
-                        "$('div.summary p')" + js1 + "$" + js2,
-                        "$('div.text p')" + js1 + "$" + js2
-                },
-                new String[]{
-
-                },
-                "$('div.article-header h1').text()",
-                "$('div.text p').text()"));
-        enUrls.add(new NewsVo("E" + idx++, "Vietnam Television - 라디오/TV","http://vtv.vn",
+        enUrls.add(new NewsVo("E" + idx++, "- Vietnam Television - 라디오/TV","http://vtv.vn",
                 new String[]{
                         "$('h1.title_detail')" + js1 + "$" + js2,
                         "$('h2.sapo')" + js1 + "$" + js2,
@@ -227,6 +216,16 @@ fn("ta-justify");
                 },
                 "$('h1.title_detail').text()",
                 "$('div.ta-justify p').text()"));
+        enUrls.add(new NewsVo("E" + idx++, "- Life & Health Newspaper","http://m.suckhoedoisong.vn",
+                new String[]{
+                        "$('h1.title_detail')" + js1 + "$" + js2,
+                        "$('div.sapo_detail')" + js1 + "$" + js2,
+                        "$('div#content_detail_news p')" + js1 + "$" + js2
+                },
+                new String[]{
+                },
+                "$('h1.title_detail').text()",
+                "$('div#content_detail_news p').text()"));
 
         String currUrl = "";
         param = getIntent().getExtras();
@@ -646,6 +645,8 @@ fn("ta-justify");
                 return false;
             } else {
                 DicUtils.dicLog("url = " + url);
+                getUrlSource(url);
+
                 view.loadUrl(url);
 
                 return true;
